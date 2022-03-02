@@ -1,7 +1,7 @@
 import app from "./server.js";
 import mongodb from "mongodb";  // Used to access mongodb.
 import dotenv from "dotenv";    // Used to access environment variables.
-import RestaurantsDAO from "./api/dao/restaurantsDAO.js";
+import RestaurantsDAO from "./dao/restaurantsDAO.js";
 dotenv.config();    // Load in environment variables.
 const MongoClient = mongodb.MongoClient;    // Access our Mongo client.
 
