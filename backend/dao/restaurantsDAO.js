@@ -1,6 +1,12 @@
 //DAO: Data Access Object
 
+
+
+//import { ObjectId } from "mongodb";
 let restaurants;    // Use to store a reference to our database.
+
+import mongodb from "mongodb";
+const ObjectId = mongodb.ObjectId;  // Use ObjectID to convert a String to a MongoDB object.
 
 export default class RestaurantsDAO {
     static async injectDB(conn) {   // Use to connect to our database. Called as soon as our server starts.
@@ -55,5 +61,61 @@ export default class RestaurantsDAO {
             );
             return { restaurantsList: [], totalNumRestaurants: 0 }
         }
-    };
+    }
+
+    static async getRestaurantByID(id) {
+        try {
+            const pipeline = [  // A pipeline helps match different collections together.
+                {
+                    $match: {
+                        _id: new ObjectId(id),   // Trying to match a specific ID of a restaurant.
+                    },
+                },
+                    {
+                        $lookup: {  // Then lookup reviews to add to the result.
+                            from: "reviews",
+                            let: {
+                                id: "$_id",
+                            },
+                            pipeline: [
+                                {
+                                    $match: {   // And match all the reviews that match that restaurant_id.
+                                        $expr: {
+                                            $eq: ["$restaurant_id", "$$id"],
+                                        },
+                                    },
+                                },
+                                {
+                                    $sort: {
+                                        date: -1,
+                                    },
+                                },
+                            ],
+                            as: "reviews",  // Set the result as reviews.
+                        },
+                    },
+                    {
+                        $addFields: {
+                            reviews: "$reviews",
+                        },
+                    },
+            ]
+            return await restaurants.aggregate(pipeline).next();    // Returns the restaurant with all the reviews connected.
+        } catch (e) {
+            console.error(`Something went wrong in getRestaurantByID: ${e}`);
+            throw e;
+        }
+    }
+
+    static async getCuisines() {
+        let cuisines = [];
+        try {
+            cuisines = await restaurants.distinct("cuisine");   // Return all distinct cuisines in the database.
+            return cuisines;
+        } catch (e) {
+            console.error(`Unable to get cuisines, ${e}`);
+            return cuisines;
+        }
+    }
+
 }

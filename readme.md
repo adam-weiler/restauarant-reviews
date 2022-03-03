@@ -63,3 +63,11 @@ JSON:
 }
 ```
 ** It is not good practice to have the user_id in the body of the text instead of proper authentication.*
+
+### Example 9:
+GET request - Get a list of each distinct cuisine:
+http://localhost:5000/api/v1/restaurants/cuisines
+
+### Example 10:
+GET request - Get all details about the first restaurant in the collection, including a list of reviews:
+http://localhost:5000/api/v1/restaurants/id/5eb3d668b31de5d588f4292a
