@@ -2,6 +2,7 @@ import app from "./server.js";
 import mongodb from "mongodb";  // Used to access mongodb.
 import dotenv from "dotenv";    // Used to access environment variables.
 import RestaurantsDAO from "./dao/restaurantsDAO.js";
+import ReviewsDAO from "./dao/reviewsDAO.js";
 dotenv.config();    // Load in environment variables.
 const MongoClient = mongodb.MongoClient;    // Access our Mongo client.
 
@@ -20,6 +21,7 @@ MongoClient.connect(    // Connect to database.
     })
     .then(async client => {     // Succesful connection to database.
         await RestaurantsDAO.injectDB(client);
+        await ReviewsDAO.injectDB(client);
         app.listen(port, () => {    // Starts our web server.
             console.log(`Listening on port ${port}`);
         })

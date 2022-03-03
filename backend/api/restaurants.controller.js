@@ -29,4 +29,8 @@ export default class RestaurantsController {
         }
         res.json(response);
     }
+
+    static async apiGetRestaurantById() {
+        
+    }
 }
