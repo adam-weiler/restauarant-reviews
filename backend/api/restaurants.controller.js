@@ -56,8 +56,3 @@ export default class RestaurantsController {
     }
 
 }
-
-//return "58:30";
-
-
-
