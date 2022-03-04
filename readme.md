@@ -1,3 +1,18 @@
+# Start the project
+
+### Start backend on Port 5000:
+
+```
+cd backend
+nodemon server
+```
+
+### Start frontend on Port 3000:
+```
+cd frontend
+npm start
+```
+
 # Sample API Requests
 
 ### Example 1:

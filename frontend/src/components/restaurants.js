@@ -1,11 +1,11 @@
 import React from "react";
 
-function Restaurants() {
+function Restaurant() {
   return (
     <div className="App">
-        Restaurants
+        Restaurant
     </div>
   );
 }
 
-export default Restaurants;
+export default Restaurant;

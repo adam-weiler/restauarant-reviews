@@ -24,7 +24,6 @@ function App() {
 
   return (
     <div>
-      hello
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <a href="/restaurants" className="navbar-brand">
           Restaurant Reviews
@@ -51,7 +50,7 @@ function App() {
 
       <div className="container mt-3">
         <Switch>
-          <Route exact path={["/", "/restaurants"]} element={<RestaurantsList />} />  {/* Loading the component. */}
+          <Route exact path={["/", "/restaurants"]} component={RestaurantsList} />  {/* Loading the component. */}
           {/* <Route exact path="/redirect" render={() => {
               handleRedirect();
               return <RestaurantsList />;
