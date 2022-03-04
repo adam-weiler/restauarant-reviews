@@ -146,7 +146,7 @@ const RestaurantsList = props => {
 
       <div className="row">
         {restaurants.map((restaurant) => {
-          const address = `${restaurant.address.building} ${restaurant.address}, ${restaurant.address.zipcode}`;  // Concat the address into a single variable.
+          const address = `${restaurant.address.building} ${restaurant.address.street}, ${restaurant.address.zipcode}`;  // Concat the address into a single variable.
           return (
             <div className="col-lg-4 pb-1">
               <div className="card">
@@ -160,7 +160,7 @@ const RestaurantsList = props => {
                     <Link to={"/restaurants/"+restaurant._id} className="btn btn-primary col-lg-5 mx-1 mb-1" >
                       View Reviews
                     </Link>
-                    <a target="_blank" href={"https://www.google.com/maps/place" + address} className="btn btn-primary col-lg-5 mx-1 mb-1">View Map</a>
+                    <a target="_blank" href={"https://www.google.com/maps/place/" + address} className="btn btn-primary col-lg-5 mx-1 mb-1">View Map</a>
                   </div>
                 </div>
               </div>
