@@ -13,6 +13,11 @@ cd frontend
 npm start
 ```
 
+# Features:
+
+### To see existing reviews:
+http://localhost:3000/restaurants/5eb3d668b31de5d588f4292a
+
 # Sample API Requests
 
 ### Example 1:

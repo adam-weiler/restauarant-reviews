@@ -63,7 +63,7 @@ function App() {
           )}
         />
         <Route 
-          path="/restauarnts/:id"
+          path="/restaurants/:id"
           render={(props) => (  /* Passing in the props user to this component. */
             <Restaurant {...props} user={user} />
           )}
