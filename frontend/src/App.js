@@ -71,7 +71,7 @@ function App() {
         <Route
           path="/login"
           render={(props) => (
-            <Login {...props} login={login} />
+            <Login {...props} login={login} />  // Pass in the login() to login.js.
           )}
         />
         </Switch>
