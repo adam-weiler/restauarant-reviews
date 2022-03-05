@@ -25,7 +25,7 @@ const Restaurant = props => {
   }, [props.match.params.id]);
 
   const deleteReview = (reviewId, index) => {
-    RestaurantDataService.deleteReview(reviewId)
+    RestaurantDataService.deleteReview(reviewId, props.user.id)
       .then(response => {
         setRestaurant((prevState) => {
           prevState.reviews.splice(index, 1)  // If you delete a review, it removes it from the state and from the page.
